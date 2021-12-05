@@ -45,7 +45,7 @@ int main10() {
 
 
 
-    std::cout << "Here is your number in 10ns:  "<< num;
+    std::cout << "Here is your number in 16ns:  "<< num;
     return 0;
 
 }
