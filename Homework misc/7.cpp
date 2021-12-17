@@ -1,18 +1,19 @@
 /*Çàäà÷à 7. Äàíà îêðóæíîñòü ñ öåëî÷èñëåííûì ðàäèóñîì R<10^6. Ïîñ÷èòàòü ÷èñëî òî÷åê ñ öåëî÷èñëåííûìè êîîðäèíàòàìè,
 ëåæàùèõ âíóòðè îêðóæíîñòè, â òîì ÷èñëå è íàõîäÿùèõñÿ íà ãðàíèöå îêðóæíîñòè.*/
 
+
 #include <iostream>
 int main() {
 	int R;
 	std::cin >> R;
-	long long  sum = 0;
+	long long sum = -1;
 	for (int y = 0; y <= R; ++y) {
 		for (int x = 0; x <= R; ++x) {
-			if ( (y * y+x * x) <= R * R) {
+			if ((x * x + y * y) <= R * R) {
 				sum += 1;
 			}
 		}
 	}
-	std::cout << sum * 4 - 4 * R;
+	std::cout << 1 + sum * 4 - 4 * R;
 	return 0;
 }
