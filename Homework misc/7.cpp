@@ -5,7 +5,7 @@
 int main() {
 	int R;
 	std::cin >> R;
-	int sum = 0;
+	long long  sum = 0;
 	for (int y = 0; y <= R; ++y) {
 		for (int x = 0; x <= R; ++x) {
 			if ( (y * y+x * x) <= R * R) {
