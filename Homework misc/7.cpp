@@ -2,14 +2,13 @@
 ëåæàùèõ âíóòðè îêðóæíîñòè, â òîì ÷èñëå è íàõîäÿùèõñÿ íà ãðàíèöå îêðóæíîñòè.*/
 
 #include <iostream>
-#include <cmath>
 int main() {
 	int R;
 	std::cin >> R;
 	int sum = 0;
 	for (int y = 0; y <= R; ++y) {
 		for (int x = 0; x <= R; ++x) {
-			if ((x * x + y * y) <= R * R) {
+			if ( (y * y+x * x) <= R * R) {
 				sum += 1;
 			}
 		}
