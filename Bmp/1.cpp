@@ -1,36 +1,65 @@
 #include "BmpStructures.h"
-#include "ImgFunction.h"
-
-typedef unsigned long ulong;
-
-const RGB RED = { 0, 0, 255 };
-const RGB ORANGE = { 0, 127, 255 };
-const RGB YELLOW = { 0, 255, 255 };
-const RGB GREEN = { 0, 255, 0 };
-const RGB BLUE = { 255, 0, 0 };
-const RGB INDIGO = { 130, 0, 75 };
-const RGB VIOLET = { 255, 0, 143 };
-
-const RGB RAINBOW[7] = { RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET };
-
-int main()
-{
-    RgbImg image = createRgbImg(100, 700, { 0,0,0 });
-
-    for (ulong i = 0; i < 7; ++i)
+#include "ImgFunctions.h"
+#include <iostream>
+int main() {
+    try
     {
-        for (ulong col = 0; col < 700; ++col)
-        {
-            for (ulong row = 0; row < 100; ++row)
+        RgbImg img = createRgbImg(100, 700);
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 0; col < 100; ++col)
             {
-                auto color_num = col / 100;
-                image.pixels[row][col] = RAINBOW[color_num];
+                img.pixels[row][col].Red = 255;
+                img.pixels[row][col].Green = 0;
+                img.pixels[row][col].Blue = 0;
             }
-        }
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 100; col < 200; ++col)
+            {
+                img.pixels[row][col].Red = 255;
+                img.pixels[row][col].Green = 128;
+                img.pixels[row][col].Blue = 0;
+            }
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 200; col < 300; ++col)
+            {
+                img.pixels[row][col].Red = 255;
+                img.pixels[row][col].Green = 255;
+                img.pixels[row][col].Blue = 0;
+            }
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 300; col < 400; ++col)
+            {
+                img.pixels[row][col].Red = 0;
+                img.pixels[row][col].Green = 255;
+                img.pixels[row][col].Blue = 0;
+            }
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 400; col < 500; ++col)
+            {
+                img.pixels[row][col].Red = 0;
+                img.pixels[row][col].Green = 128;
+                img.pixels[row][col].Blue = 255;
+            }
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 500; col < 600; ++col)
+            {
+                img.pixels[row][col].Red = 0;
+                img.pixels[row][col].Green = 0;
+                img.pixels[row][col].Blue = 255;
+            }
+        for (size_t row = 0; row < 100; ++row)
+            for (size_t col = 600; col < 700; ++col)
+            {
+                img.pixels[row][col].Red = 128;
+                img.pixels[row][col].Green = 0;
+                img.pixels[row][col].Blue = 255;
+            }
+        writeRgbImg("rainbow.bmp", img);
     }
-
-    writeRgbImg("rainbow.bmp", image);
-    deleteRgbImg(image);
-
+    catch (std::exception const& e)
+    {
+        std::cout << "Error: " << e.what() << "\n";
+        return -1;
+    }
     return 0;
 }

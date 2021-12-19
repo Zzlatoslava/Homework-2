@@ -1,35 +1,19 @@
 #include "BmpStructures.h"
-#include "ImgFunction.h"
+#include "ImgFunctions.h"
 #include <iostream>
-
-typedef unsigned long ulong;
-
-RgbImg toGrayscale(RgbImg const& image)
-{
-    RgbImg output = copyRgbImg(image);
-
-    for (ulong row = 0; row < image.height; ++row)
-    {
-        for (ulong col = 0; col < image.width; ++col)
-        {
-            RGB const pixel = image.pixels[row][col];
-            unsigned char const gray = (char)((pixel.Blue + pixel.Green + pixel.Red) / 3);
-            output.pixels[row][col] = { gray, gray, gray };
+int main3() {
+    const char* input = "rainbow.bmp";
+    const char* output = "shades of grey rainbow.bmp";
+    RgbImg iimg = readRgbImg(input);
+    RgbImg outputimg = createRgbImg(iimg.height, iimg.width, { 0, 0, 0 });
+    for (size_t row = 0; row < iimg.width; row++) {
+        for (size_t col = 0; col < iimg.height; col++) {
+            int median = (iimg.pixels[col][row].Red + iimg.pixels[col][row].Blue + iimg.pixels[col][row].Green) / 3;
+            outputimg.pixels[col][row].Red = outputimg.pixels[col][row].Green = outputimg.pixels[col][row].Blue = median;
         }
     }
-
-    return output;
-}
-
-int main(int argc, char const* argv[])
-{
-    RgbImg input = readRgbImg("MARBLES.bmp");
-    RgbImg gray = toGrayscale(input);
-
-    writeRgbImg("MARBLES_gray.bmp", gray);
-
-    deleteRgbImg(input);
-    deleteRgbImg(gray);
-
+    writeRgbImg(output, outputimg);
+    deleteRgbImg(iimg);
+    deleteRgbImg(outputimg);
     return 0;
 }
