@@ -1,11 +1,43 @@
-/*Заполнить массив nxm (размеры вводит пользователь) случайными числами в диапазоне от 0 до 100000.
-Вывести матрицу на экран, выровняв столбцы по левому краю.*/
+/*Р—Р°РїРѕР»РЅРёС‚СЊ РјР°СЃСЃРёРІ nxm (СЂР°Р·РјРµСЂС‹ РІРІРѕРґРёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ) СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ 0 РґРѕ 100000.
+Р’С‹РІРµСЃС‚Рё РјР°С‚СЂРёС†Сѓ РЅР° СЌРєСЂР°РЅ, РІС‹СЂРѕРІРЅСЏРІ СЃС‚РѕР»Р±С†С‹ РїРѕ Р»РµРІРѕРјСѓ РєСЂР°СЋ.*/
 
 #include<iostream>
 #include<string>
 
 std::string to_aligned_left_row(int number, int spaces) {
-    std::string result = std::to_string(number);
+    std::string result /*= std::to_string(number)*/;
+    int q = 0;
+    while (number != 0) {
+        q = number % 10;
+        if (q = 1) {
+            result.append("1");
+        }
+        else if (q = 2) {
+            result.append("2");
+        }
+        else if (q = 3) {
+            result.append("3");
+        }
+        else if (q = 4) {
+            result.append("4");
+        }
+        else if (q = 5) {
+            result.append("5");
+        }
+        else if (q = 6) {
+            result.append("6");
+        }
+        else if (q = 7) {
+            result.append("7");
+        }
+        else if (q = 8) {
+            result.append("8");
+        }
+        else if (q = 9) {
+            result.append("9");
+        }
+        number /= 10;
+    }
 
     int number_of_digits = 0;
 
@@ -24,6 +56,7 @@ std::string to_aligned_left_row(int number, int spaces) {
 }
 
 int main() {
+    setlocale(LC_ALL, "RUS");
     int N, M;
     std::cin >> N >> M;
 
