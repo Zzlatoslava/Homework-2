@@ -5,7 +5,7 @@
 #include<string>
 
 std::string to_aligned_left_row(int number, int spaces) {
-    std::string result /*= std::to_string(number)*/;
+    std::string result;
     int q = 0;
     while (number != 0) {
         q = number % 10;
