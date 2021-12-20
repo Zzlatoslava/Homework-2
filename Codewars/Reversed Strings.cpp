@@ -1,11 +1,15 @@
 #include <string>
-using namespace std;
+using namespace std ; 
 
-string reverseString(string str)
+string reverseString (string str )
 {
-    std::string resh;
-    for (int i = str.length() - 1; i >= 0; i--) {
-        resh += str[i];
-    }
-    return resh;
+  char s; 
+  int q = str.length();
+  for (int i = 0; i < q ; i++){
+    s = str[i];
+    str[i] = str[q-1];
+    str[q-1] = s;
+    q -= 1;
+  }
+  return str; ;
 }
