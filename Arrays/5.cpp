@@ -1,26 +1,22 @@
-#include <iostream>
+#include<iostream>
 
-
-int main5() {
-    int n1, n2, max, N;
-    max = 0;
-    n1 = 0;
-    n2 = 0;
-    std::cout << "Enter the quantity of numbers : ";
+int main() {
+    int N;
+    std::cout << "Enter the quantity of numbers : ";  
     std::cin >> N;
-    std::cout << "Enter numbers: \n";
-    int num[10000];
-    for (int i = 0; i < N; i++) {
-        std::cin >> num[i];
+    int num[1000] ;
+    std::cout << "Enter numbers: \n ";
+    for (int i = 1; i <= N; ++i) {
+        std::cin >> i[num];
     }
-
-    for (int p = 1; p < N; p++) {
-        if (num[p-1] + num[p ] > max) {
-            n1 = num[p-1];
-            n2 = num[p ];
-            max = num[p-1] + num[p];
+    int max = 0;
+    int index = 0;
+    for (int i = 1; i <= N; ++i) {
+        if ((num[i] + num[i + 1]) > max) {
+            max = num[i] + num[i + 1];
+            index = i;
         }
     }
-    std::cout << "Summ " << n1 << " and " << n2 << " maximal";
+    std::cout << "Summ " << num[index] << " and " << num[index+1] << " maximal" ;
     return 0;
 }
