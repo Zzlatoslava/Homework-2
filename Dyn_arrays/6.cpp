@@ -1,43 +1,17 @@
-/*Çàïîëíèòü ìàññèâ nxm (ðàçìåðû ââîäèò ïîëüçîâàòåëü) ñëó÷àéíûìè ÷èñëàìè â äèàïàçîíå îò 0 äî 100000.
-Âûâåñòè ìàòðèöó íà ýêðàí, âûðîâíÿâ ñòîëáöû ïî ïðàâîìó êðàþ*/
-
 #include<iostream>
 #include<string>
 
 std::string to_aligned_right_row(int number, int spaces) {
    std::string result;
-    int q = 0;
+    int q ;
+    char c;
     while (number != 0) {
         q = number % 10;
-        if (q = 1) {
-            result.append("1");
-        }
-        else if (q = 2) {
-            result.append("2");
-        }
-        else if (q = 3) {
-            result.append("3");
-        }
-        else if (q = 4) {
-            result.append("4");
-        }
-        else if (q = 5) {
-            result.append("5");
-        }
-        else if (q = 6) {
-            result.append("6");
-        }
-        else if (q = 7) {
-            result.append("7");
-        }
-        else if (q = 8) {
-            result.append("8");
-        }
-        else if (q = 9) {
-            result.append("9");
-        }
+        c = (char)(q + 48);
+        result = c + result;
         number /= 10;
     }
+
 
     int number_of_digits = 0;
 
