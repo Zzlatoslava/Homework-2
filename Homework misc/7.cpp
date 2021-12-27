@@ -1,19 +1,25 @@
-/*Çàäà÷à 7. Äàíà îêðóæíîñòü ñ öåëî÷èñëåííûì ðàäèóñîì R<10^6. Ïîñ÷èòàòü ÷èñëî òî÷åê ñ öåëî÷èñëåííûìè êîîðäèíàòàìè,
-ëåæàùèõ âíóòðè îêðóæíîñòè, â òîì ÷èñëå è íàõîäÿùèõñÿ íà ãðàíèöå îêðóæíîñòè.*/
-
-
-#include <iostream>
-int main() {
-	int R;
+#include<iostream>
+int main()
+{
+	int flag;
+	long long a = 0;
+	long long R;
+	std::cout << "Enter the radius :";
 	std::cin >> R;
-	long long sum = -1;
-	for (int y = 0; y <= R; ++y) {
-		for (int x = 0; x <= R; ++x) {
-			if ((x * x + y * y) <= R * R) {
-				sum += 1;
-			}
+	long long f = R;
+	long long d = R * R;
+	for (long long x = f; x >= f / 2; --x)
+	{
+		flag = 0;
+		for (long long y = R; y >= 0; --y)
+		{
+			if (x*x + y * y <= d) break;
+			++a;
+			++flag;
 		}
+		if (flag == 0) break;
+		--R;
 	}
-	std::cout << 1 + sum * 4 - 4 * R;
+	std::cout << (d * 4 - a * 8 + 4 * (f - R) + f * 4 + 1);
 	return 0;
 }
