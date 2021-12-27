@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+
 
 int main5() {
     int n1, n2, max, N;
@@ -9,7 +9,7 @@ int main5() {
     std::cout << "Enter the quantity of numbers : ";
     std::cin >> N;
     std::cout << "Enter numbers: \n";
-    std::vector <int> num(N);
+    int num[10000];
     for (int i = 0; i < N; i++) {
         std::cin >> num[i];
     }
