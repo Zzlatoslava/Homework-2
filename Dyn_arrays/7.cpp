@@ -1,27 +1,55 @@
 #include<iostream>
 
-void shiftArray(int A[], int n, int k)
-{
+void shiftArray(int A[], int n, int k) {
     int a;
-    k = k % n;
-    for (int i = 0; i < k; ++i)
-    {
-        a = A[0];
-        for (int j = 0; j < n - 1; ++j) A[j] = A[j + 1];
-        A[n - 1] = a;
+    if (k > 0) {
+        while (k > 0) {
+            a = A[0];
+            for (int i = 0; i < n - 1; ++i) {
+                A[i] = A[i + 1];
+            }
+            A[n - 1] = a;
+            --k;
+        }
+        
+    }
+    else {
+        k = -k;
+        int c;
+        int t;
+        for (int i = 0; i < n / 2; ++i) {
+            c = A[i];
+            A[i] = A[n - 1 - i];
+            A[n - 1 - i] = c;
+        }
+        while (k > 0) {
+            a = A[0];
+            for (int i = 0; i < n - 1; ++i) {
+                A[i] = A[i + 1];
+            }
+            A[n - 1] = a;
+            --k;
+        }
+        for (int i = 0; i < n / 2; ++i) {
+            t = A[i];
+            A[i] = A[n - 1 - i];
+            A[n - 1 - i] = t;
+        }
+        
     }
 }
 
-int main() {
-    int N, z;
+
+int main(){
+    int N, k;
     std::cout << "Enter array size and shift: ";
-    std::cin >> N >> z;
+    std::cin >> N >> k;
     int* arr = new int[N];
     std::cout << "Enter array ";
     for (int i = 0; i < N; ++i) {
         std::cin >> arr[i];
     }
-    shiftArray(arr, N, z);
+    shiftArray(arr, N, k);
     for (int i = 0; i < N; ++i) {
         std::cout << arr[i] << " ";
     }
